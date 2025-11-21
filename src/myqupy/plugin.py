@@ -81,15 +81,15 @@ class QuantityPlugin(Plugin):
    
    def get_function_hook(self, fullname: str) -> Optional[FunctionCheckType]:
       """Provide a type checking hook for the given function name."""
-      return FUNCTION_CHECKERS.get(fullname, None)
+      return None # FUNCTION_CHECKERS.get(fullname, None)
 
-@function_checker('int.__add__')
+@function_checker('list')
 def check_add_function(ctx: FunctionContext) -> Type:
    """Check additive expressions."""
    return ctx.default_return_type
  
   
-def plugin(version: str):
+def plugin(_: str):
    """Return the plugin."""
    return QuantityPlugin
   
